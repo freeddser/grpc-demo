@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  grpc:
+    image: "scpman/golang:1.6.2"
+    ports:
+      - "50051:50051"
+    volumes:
+      - ./app/:/mnt/app/
+    tty: true
