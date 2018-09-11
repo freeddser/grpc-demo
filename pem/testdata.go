@@ -15,16 +15,17 @@
  *
  */
 
-package testdata
+package pem
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"path/filepath"
 )
 
 // Path returns the absolute path the given relative file or directory path,
-// relative to the google.golang.org/grpc/testdata directory in the user's GOPATH.
+// relative to the google.golang.org/grpc/pem directory in the user's GOPATH.
 // If rel is already absolute, it is returned unmodified.
 func Path(rel string) string {
 	//fmt.Println("-------AAA-----------")
@@ -34,11 +35,12 @@ func Path(rel string) string {
 		return rel
 	}
 
-	v, err := goPackagePath("testdata")
+	v, err := goPackagePath("pem")
+	fmt.Println(v, rel)
 	if err != nil {
-		log.Fatalf("Error finding testdata directory: %v", err)
+		log.Fatalf("Error finding pem directory: %v", err)
 	}
-        //fmt.Println(filepath.Join(v, rel))
+	//fmt.Println(filepath.Join(v, rel))
 	return filepath.Join(v, rel)
 }
 
@@ -51,7 +53,7 @@ func goPackagePath(pkg string) (path string, err error) {
 	}
 
 	for _, p := range filepath.SplitList(gp) {
-		dir := filepath.Join(p, "src", filepath.FromSlash(pkg))
+		dir := filepath.Join(p, "src/grpc-customer", filepath.FromSlash(pkg))
 		fi, err := os.Stat(dir)
 		if os.IsNotExist(err) {
 			continue
@@ -64,5 +66,6 @@ func goPackagePath(pkg string) (path string, err error) {
 		}
 		return dir, nil
 	}
+	//fmt.Println(path)
 	return path, os.ErrNotExist
 }

@@ -1,0 +1,27 @@
+syntax = "proto3";
+package customer;
+
+// The User sercie definition
+service User {
+    // Get all Users with filter - A server-to-client streaming RPC.
+    rpc GetUsers(UserFilter) returns (stream UserRequest) {}
+
+    // Create a new User - A simple RPC
+    rpc CreateUser (UserRequest) returns (UserResponse) {}
+}
+
+message UserRequest {
+    int32 id = 1;   // Unique ID number for a User.
+    string name = 2;
+
+}
+
+message UserResponse {
+    int32 id = 1;
+    bool success = 2;
+}
+
+message UserFilter {
+    string keyword = 1;
+    string id = 2;
+}

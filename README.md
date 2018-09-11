@@ -38,4 +38,10 @@ echo "" | openssl s_client  -connect 54.255.15.251:50051
 go run client.go -tls=true -server_addr=54.255.15.251:50051
 
 
+#updated at 2018-09-11
+#go run server.go
+
+#go run client.go -tls=true -server_addr=localhost:50055
+
+
 
