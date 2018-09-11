@@ -14,7 +14,7 @@ var (
 	tls                = flag.Bool("tls", true, "Connection uses TLS if true, else plain TCP")
 	caFile             = flag.String("ca_file", "", "The file containning the CA root cert file")
 	serverAddr         = flag.String("server_addr", "127.0.0.1:55555", "The server address in the format of host:port")
-	serverHostOverride = flag.String("server_host_override", "www.qraved.com", "The server name use to verify the hostname returned by TLS handshake")
+	serverHostOverride = flag.String("server_host_override", "www.lijiuyang.com", "The server name use to verify the hostname returned by TLS handshake")
 )
 
 var Conn *grpc.ClientConn
@@ -36,7 +36,7 @@ func GetClientConn() (*grpc.ClientConn, error) {
 	log.Println("init ssl and connect to RPC server...")
 	if *tls {
 		if *caFile == "" {
-			*caFile = pem.Path("qraved_com.crt")
+			*caFile = pem.Path("www.lijiuyang.com.crt")
 		}
 		creds, err := credentials.NewClientTLSFromFile(*caFile, *serverHostOverride)
 

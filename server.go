@@ -36,10 +36,10 @@ func initServer() ([]grpc.ServerOption, net.Listener) {
 	var opts []grpc.ServerOption
 	if *tls {
 		if *certFile == "" {
-			*certFile = pem.Path("qraved_com.crt")
+			*certFile = pem.Path("www.lijiuyang.com.crt")
 		}
 		if *keyFile == "" {
-			*keyFile = pem.Path("qraved_com.key")
+			*keyFile = pem.Path("www.lijiuyang.com.key")
 		}
 		creds, err := credentials.NewServerTLSFromFile(*certFile, *keyFile)
 		if err != nil {

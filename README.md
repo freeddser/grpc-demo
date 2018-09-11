@@ -45,3 +45,6 @@ go run client.go -tls=true -server_addr=54.255.15.251:50051
 
 
 
+create private ssl test file:
+openssl req -new -newkey rsa:2048 -nodes -keyout www.lijiuyang.com.key -out www.lijiuyang.com.csr
+openssl x509 -req -days 365 -in www.lijiuyang.com.csr  -signkey www.lijiuyang.com.key -out www.lijiuyang.com.crt
