@@ -2,7 +2,7 @@ package server
 
 import (
 	"golang.org/x/net/context"
-	customerPB "grpc-customer/proto/customer"
+	customerPB "grpcD/proto/customer"
 
 	"strings"
 )

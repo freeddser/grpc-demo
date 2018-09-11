@@ -3,7 +3,7 @@ package main
 
 import (
 	"google.golang.org/grpc"
-	"grpc-customer/client"
+	"grpcD/client"
 )
 
 var Conn *grpc.ClientConn

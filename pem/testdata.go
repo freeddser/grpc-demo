@@ -53,7 +53,7 @@ func goPackagePath(pkg string) (path string, err error) {
 	}
 
 	for _, p := range filepath.SplitList(gp) {
-		dir := filepath.Join(p, "src/grpc-customer", filepath.FromSlash(pkg))
+		dir := filepath.Join(p, "src/grpcD", filepath.FromSlash(pkg))
 		fi, err := os.Stat(dir)
 		if os.IsNotExist(err) {
 			continue

@@ -3,7 +3,7 @@ package client
 import (
 	"fmt"
 	"golang.org/x/net/context"
-	userPB "grpc-customer/proto/user"
+	userPB "grpcD/proto/user"
 	"io"
 	"log"
 )

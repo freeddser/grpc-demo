@@ -6,7 +6,7 @@ import (
 	"flag"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
-	"grpc-customer/pem"
+	"grpcD/pem"
 	"os"
 )
 

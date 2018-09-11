@@ -3,7 +3,8 @@ package server
 import (
 	"fmt"
 	"golang.org/x/net/context"
-	userPB "grpc-customer/proto/user"
+	userPB "grpcD/proto/user"
+	"grpcD/util"
 	"strings"
 )
 
@@ -24,14 +25,13 @@ func (s *UserServer) GetUsers(filter *userPB.UserFilter, stream userPB.User_GetU
 	for _, user := range s.savedUsers {
 
 		if filter.Keyword != "" {
-			fmt.Println("xxx")
 			if !strings.Contains(user.Name, filter.Keyword) {
 				continue
 			}
 		}
 
 		if filter.Id != "" {
-			if String(user.Id) != filter.Id {
+			if util.ConvertInt32ToString(user.Id) != filter.Id {
 				continue
 			}
 		}
@@ -41,25 +41,4 @@ func (s *UserServer) GetUsers(filter *userPB.UserFilter, stream userPB.User_GetU
 		}
 	}
 	return nil
-}
-
-func String(n int32) string {
-	buf := [11]byte{}
-	pos := len(buf)
-	i := int64(n)
-	signed := i < 0
-	if signed {
-		i = -i
-	}
-	for {
-		pos--
-		buf[pos], i = '0'+byte(i%10), i/10
-		if i == 0 {
-			if signed {
-				pos--
-				buf[pos] = '-'
-			}
-			return string(buf[pos:])
-		}
-	}
 }
