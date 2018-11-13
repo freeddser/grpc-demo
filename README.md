@@ -1,12 +1,4 @@
-git clone https://bitbucket.org/scpman/grpc-customer.git
 
-docker-compose up -d
-
-docker exec -it $name /bin/bash
-
-apt-get update && apt-get install git -y
-
-cd /mnt/app/src
 
 go run customerServer/server.go 
 
@@ -27,7 +19,7 @@ libprotoc 3.5.0
 
 protoc -I customer/ customer/customer.proto --go_out=plugins=grpc:customer
 
-https://app.yinxiang.com/Home.action#n=27dfd813-689c-47d1-9ab2-a798f8bc2500&s=s3&ses=4&sh=2&sds=5&
+
 
 go run customerServer/server.go -port=50051
 
