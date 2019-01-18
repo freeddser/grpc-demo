@@ -21,13 +21,13 @@ protoc -I customer/ customer/customer.proto --go_out=plugins=grpc:customer
 
 
 
-go run customerServer/server.go -port=50051
+go run server.go -port=50051
 
 
-echo "" | openssl s_client  -connect 54.255.15.251:50051
+echo "" | openssl s_client  -connect 127.0.0.1:50051
 
 
-go run client.go -tls=true -server_addr=54.255.15.251:50051
+go run client.go -tls=true -server_addr=127.0.0.1:50051
 
 
 #updated at 2018-09-11
